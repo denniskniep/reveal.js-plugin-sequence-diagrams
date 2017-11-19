@@ -1,0 +1,18 @@
+{
+  "name": "reveal.js-plugin-sequence-diagrams",
+  "version": "1.0.0",
+  "main": "sequence-diagrams-plugin.js",
+  "scripts": {
+    "copyLibDependenciesToDist" : "cp ./bower_components/bower-webfontloader/webfont.js ./dist/ && cp ./bower_components/snap.svg/dist/snap.svg-min.js ./dist/ && cp ./bower_components/underscore/underscore-min.js ./dist/",
+    "copyLibToDist" : "cp ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css ./dist/ && cp ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js ./dist/",
+    "copyLibFontsToDist" : "cp ./bower_components/js-sequence-diagrams/dist/*woff* ./dist/",
+    "copySelfToDist" : "cp ./sequence-diagrams-plugin.js ./dist/",
+    "build": "bower install && mkdir -p dist && npm run copySelfToDist && npm run copyLibToDist && npm run copyLibFontsToDist && npm run copyLibDependenciesToDist"
+
+  },
+  "keywords": [
+    "reveal.js"
+  ],
+  "author": "Dennis Kniep <kniepdennis@gmail.com>",
+  "license": "Simplified BSD License"
+}
