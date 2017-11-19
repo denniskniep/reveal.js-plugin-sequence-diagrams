@@ -1,0 +1,11 @@
+{
+  "name": "reveal.js-plugin-sequence-diagrams",
+  "authors": [
+    "Dennis Kniep <kniepdennis@gmail.com>"
+  ],
+  "main": "sequence-diagrams.js",
+  "keywords": [
+    "reveal.js"
+  ],
+  "license": "Simplified BSD License"  
+}
