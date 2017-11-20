@@ -76,3 +76,28 @@ The plugin searches for all HTML objects with class `sequence-diagram`. Then it 
 ```
 
 The `data-config-*` attributes overrides the config from the reveal.js initialization options. But they are not required.
+
+## Customize for Dark Theme
+
+Customize the line and text color to white.
+
+```css
+<style>
+	line {
+		stroke: white;
+	}
+	
+	marker {
+		stroke:white;
+		fill: white;
+	}	
+	
+	.signal text {
+		fill: white;
+	}
+	
+	.signal text:hover {
+		fill: white;
+	}
+</style>
+```
