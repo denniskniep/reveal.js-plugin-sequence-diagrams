@@ -19,48 +19,48 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 	}
 
 	function removeCreatedDiagram(node) {
-	 	if(node.previousSibling && node.previousSibling.className === classNameBuilt){
-	 		node.parentNode.removeChild(node.previousSibling);
-	 	}
+		if(node.previousSibling && node.previousSibling.className === classNameBuilt){
+			node.parentNode.removeChild(node.previousSibling);
+		}
 	}
 
-	function insertNodeAfter(referenceNode, newNode) {
-	    referenceNode.parentNode.insertBefore(newNode, referenceNode);
+	function insertNodeBefore(referenceNode, newNode) {
+		referenceNode.parentNode.insertBefore(newNode, referenceNode);
 	}	
 
 	function createDiagram(diagramContainer, options, diagramSyntax) { 
-      var diagram = Diagram.parse(diagramSyntax);      
-      listenToDiagramIsRendered(diagramContainer, options, makeFragmentsIfRequired);
-      diagram.drawSVG(diagramContainer, { theme: options.theme }); 
+		var diagram = Diagram.parse(diagramSyntax);      
+		listenToDiagramIsRendered(diagramContainer, options, makeFragmentsIfRequired);
+		diagram.drawSVG(diagramContainer, { theme: options.theme }); 
 	}	
 
 	function listenToDiagramIsRendered(diagramContainer, options, callback){
- 		var observer = new MutationObserver(function (e) {  
+		var observer = new MutationObserver(function (e) {  
 
-	        Reveal.sync(); 
-	        callback(diagramContainer, options)
+			Reveal.sync(); 
+			callback(diagramContainer, options)
 
-	        if(config && config.initialize){
+			if(config && config.initialize){
 				config.initialize(diagramContainer);
 			}
 
-	        this.disconnect(); 
-        }); 
+			this.disconnect();
+		});
 
-        observer.observe(diagramContainer, { childList: true }); 
+		observer.observe(diagramContainer, { childList: true }); 
 	}
 
-	function makeFragmentsIfRequired(diagramContainer, options){		
+	function makeFragmentsIfRequired(diagramContainer, options){
 		if (options.useFragments && diagramContainer) { 
-	        var svg =  diagramContainer; 
-	        var signalElements = svg.querySelectorAll('.signal, .note');                                                             
-            for(var signalElementKey in signalElements){ 
-                var signalElement = signalElements[signalElementKey]; 
-                if(signalElement.classList){                                     
-                    signalElement.classList.add('fragment'); 
-                } 
-            }                             
-	    } 
+			var svg =  diagramContainer; 
+			var signalElements = svg.querySelectorAll('.signal, .note');
+			for(var signalElementKey in signalElements){ 
+				var signalElement = signalElements[signalElementKey]; 
+				if(signalElement.classList){
+					signalElement.classList.add('fragment'); 
+				} 
+			}
+		} 
 	}
 
 	function getOptions(element){ 
@@ -70,10 +70,10 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 			useFragments = useFragments.toLowerCase() == "true";
 		}
 
-      	return {
-      		theme : getOption(element, "theme", "simple"),
-      		useFragments : useFragments,
-      	};
+		return {
+			theme : getOption(element, "theme", "simple"),
+			useFragments : useFragments,
+		};
 	}
 
 	function getOption(element, key, defaultOption){
@@ -83,9 +83,9 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 
 		if(config && config.hasOwnProperty(key)){
 			return config[key];
-      	}
+		}
 
-      	return defaultOption;
+		return defaultOption;
 	}
 
 	Reveal.addEventListener('ready',onRevealJsReady);

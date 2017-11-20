@@ -37,7 +37,7 @@ Also import the CSS if you plan to use the hand drawn theme:
 ```
 
 ## Configuration
-The plugin can be configured by providing an sequencediagrams option containing an object with `theme`,  `useFragments` and `initialize` within the reveal.js initialization options.
+The plugin can be configured by providing a sequencediagrams option containing an object with `theme`,  `useFragments` and `initialize` within the reveal.js initialization options.
 
 ```javascript
 Reveal.initialize({
@@ -56,8 +56,7 @@ Reveal.initialize({
 You can configure `simple` or `hand`
 
 **useFragments**
-`true` registers all steps and notes as fragments 
-[Reveal.js Fragments](http://lab.hakim.se/reveal-js/#/fragments)
+`true` registers all steps and notes as [Reveal.js Fragments](http://lab.hakim.se/reveal-js/#/fragments)
 
 ## Basic usage
 The plugin searches for all HTML objects with class `sequence-diagram`. Then it uses the `innerText` of that element to build the sequence diagram.
