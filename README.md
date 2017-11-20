@@ -1,4 +1,4 @@
-# JS Sequence Diagrams
+# JS Sequence Diagrams - Reveal.js Plugin
 
 A plugin for [Reveal.js](https://github.com/hakimel/reveal.js) allowing to add Sequence Diagrams.
 
@@ -48,13 +48,18 @@ Reveal.initialize({
 			initialize: (function(diagramContainer){ 
 		    		console.log("Diagram rendered!");
 			})
-	 }
-	 // ...
-	],
+	 },
+	 // ...	
 ```
+### Configuration items
+**theme**
+You can configure `simple` or `hand`
+
+**useFragments**
+`true` registers all steps and notes as fragments 
+[Reveal.js Fragments](http://lab.hakim.se/reveal-js/#/fragments)
 
 ## Basic usage
-
 The plugin searches for all HTML objects with class `sequence-diagram`. Then it uses the `innerText` of that element to build the sequence diagram.
 
 **Example:**
