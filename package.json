@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "main": "sequence-diagrams-plugin.js",
   "scripts": {
-    "copyLibDependenciesToDist" : "cp ./bower_components/bower-webfontloader/webfont.js ./dist/ && cp ./bower_components/snap.svg/dist/snap.svg-min.js ./dist/ && cp ./bower_components/underscore/underscore-min.js ./dist/",
-    "copyLibToDist" : "cp ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css ./dist/ && cp ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js ./dist/",
-    "copyLibFontsToDist" : "cp ./bower_components/js-sequence-diagrams/dist/*woff* ./dist/",
-    "copySelfToDist" : "cp ./sequence-diagrams-plugin.js ./dist/",
-    "build": "bower install && mkdir -p dist && npm run copySelfToDist && npm run copyLibToDist && npm run copyLibFontsToDist && npm run copyLibDependenciesToDist"
-
+    "copyLibDependenciesToDist": "copyfiles -f ./bower_components/bower-webfontloader/webfont.js ./bower_components/snap.svg/dist/snap.svg-min.js ./bower_components/underscore/underscore-min.js ./dist/",
+    "copyLibToDist": "copyfiles -f ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js ./dist/",
+    "copyLibFontsToDist": "copyfiles -f ./bower_components/js-sequence-diagrams/dist/*woff* ./dist/",
+    "copySelfToDist": "copyfiles -f ./sequence-diagrams-plugin.js ./dist/",
+    "build": "bower install && npm run copySelfToDist && npm run copyLibToDist && npm run copyLibFontsToDist && npm run copyLibDependenciesToDist"
   },
   "keywords": [
     "reveal.js"
   ],
-  "author": "Dennis Kniep <kniepdennis@gmail.com>"
+  "repository" : "https://github.com/denniskniep/reveal.js-plugin-sequence-diagrams",
+  "author": "Dennis Kniep <kniepdennis@gmail.com>",
+  "devDependencies": {
+    "bower": "^1.8.2",
+    "copyfiles": "^1.2.0"
+  }
 }
