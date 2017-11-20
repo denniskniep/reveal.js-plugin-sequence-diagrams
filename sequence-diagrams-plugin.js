@@ -11,7 +11,7 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 
 			removeCreatedDiagram(diagramBlueprintElement);
 			var diagramContainer = document.createElement("div");
-			insertNodeAfter(diagramBlueprintElement, diagramContainer);
+			insertNodeBefore(diagramBlueprintElement, diagramContainer);
 			var diagramSyntax = diagramBlueprintElement.innerText;
 			var options = getOptions(diagramBlueprintElement);
 			createDiagram(diagramContainer, options, diagramSyntax);

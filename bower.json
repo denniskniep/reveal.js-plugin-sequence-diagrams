@@ -7,7 +7,6 @@
   "keywords": [
     "reveal.js"
   ],
-  "license": "Simplified BSD License",
   "dependencies": {
     "js-sequence-diagrams": "bramp/js-sequence-diagrams#^2.0.1"
   }
