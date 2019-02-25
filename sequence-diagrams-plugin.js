@@ -4,8 +4,8 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 	var classNameBuilt = "sequence-diagram-built";
 	var config = Reveal.getConfig().sequencediagrams;
 
-	function onRevealJsReady(event){
-		var elements = document.getElementsByClassName(className);
+	function onRevealJsSlideChanged(event){
+		var elements = event.currentSlide.getElementsByClassName(className);
 		for (var i = 0; i < elements.length; i++ ){
 			var diagramBlueprintElement = elements[i];
 
@@ -88,7 +88,7 @@ var RevealSequenceDiagram = window.RevealSequenceDiagram || (function(){
 		return defaultOption;
 	}
 
-	Reveal.addEventListener('ready',onRevealJsReady);
+	Reveal.addEventListener('slidechanged',onRevealJsSlideChanged);
 
 })();
 
