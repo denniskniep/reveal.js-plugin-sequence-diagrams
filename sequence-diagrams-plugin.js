@@ -5,13 +5,16 @@ var RevealSequenceDiagram = () => ({
         var className = "sequence-diagram";
         var classNameBuilt = "sequence-diagram-built";
 
-    	function onRevealJsReady(event){
-    		var elements = document.getElementsByClassName(className);
+    	function renderDiagrams(event){
+    		var elements = Reveal.getCurrentSlide().getElementsByClassName(className);
     		for (var i = 0; i < elements.length; i++ ){
     			var diagramBlueprintElement = elements[i];
 
-    			removeCreatedDiagram(diagramBlueprintElement);
+    			if (wasBuilt(diagramBlueprintElement)) {
+        			continue
+    			}
     			var diagramContainer = document.createElement("div");
+    			diagramContainer.className = classNameBuilt
     			insertNodeBefore(diagramBlueprintElement, diagramContainer);
     			var diagramSyntax = diagramBlueprintElement.innerText;
     			var options = getOptions(diagramBlueprintElement);
@@ -19,10 +22,8 @@ var RevealSequenceDiagram = () => ({
     		}
     	}
 
-    	function removeCreatedDiagram(node) {
-    		if(node.previousSibling && node.previousSibling.className === classNameBuilt){
-    			node.parentNode.removeChild(node.previousSibling);
-    		}
+    	function wasBuilt(node) {
+    		return node.previousSibling && node.previousSibling.className === classNameBuilt
     	}
 
     	function insertNodeBefore(referenceNode, newNode) {
@@ -89,6 +90,7 @@ var RevealSequenceDiagram = () => ({
     		return defaultOption;
     	}
 
-    	Reveal.addEventListener('ready',onRevealJsReady);
+    	Reveal.addEventListener('ready',renderDiagrams);
+    	Reveal.addEventListener('slidechanged',renderDiagrams);
 	}
 })
