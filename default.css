@@ -1,0 +1,16 @@
+line {
+	stroke: white;
+}
+
+marker {
+	stroke:white;
+	fill: white;
+}	
+
+.signal text {
+	fill: white;
+}
+
+.signal text:hover {
+	fill: white;
+}

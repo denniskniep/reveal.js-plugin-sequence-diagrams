@@ -7,7 +7,8 @@
     "copyLibToDist": "copyfiles -f ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css ./bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js ./dist/",
     "copyLibFontsToDist": "copyfiles -f ./bower_components/js-sequence-diagrams/dist/*woff* ./dist/",
     "copySelfToDist": "copyfiles -f ./sequence-diagrams-plugin.js ./dist/",
-    "build": "bower install && npm run copySelfToDist && npm run copyLibToDist && npm run copyLibFontsToDist && npm run copyLibDependenciesToDist"
+    "copyCSSToDist": "copyfiles -f ./*.css ./dist/",
+    "build": "bower install && npm run copySelfToDist && npm run copyLibToDist && npm run copyLibFontsToDist && npm run copyLibDependenciesToDist && npm run copyCSSToDist"
   },
   "keywords": [
     "reveal.js"

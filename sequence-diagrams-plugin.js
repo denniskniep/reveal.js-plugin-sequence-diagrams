@@ -3,7 +3,6 @@ var RevealSequenceDiagram = () => ({
 	init: (Reveal) => {
     	var config = Reveal.getConfig().sequencediagrams;
         var className = "sequence-diagram";
-        var classNameBuilt = "sequence-diagram-built";
 
     	function renderDiagrams(event){
     		var elements = Reveal.getCurrentSlide().getElementsByClassName(className);
@@ -13,27 +12,37 @@ var RevealSequenceDiagram = () => ({
     			if (wasBuilt(diagramBlueprintElement)) {
         			continue
     			}
-    			var diagramContainer = document.createElement("div");
-    			diagramContainer.className = classNameBuilt
-    			insertNodeBefore(diagramBlueprintElement, diagramContainer);
-    			var diagramSyntax = diagramBlueprintElement.innerText;
+    			var diagramSyntax = diagramBlueprintElement.textContent;
+    			diagramBlueprintElement.innerHTML = "";
     			var options = getOptions(diagramBlueprintElement);
-    			createDiagram(diagramContainer, options, diagramSyntax);
+    			createDiagram(diagramBlueprintElement, options, diagramSyntax);
     		}
     	}
 
     	function wasBuilt(node) {
-    		return node.previousSibling && node.previousSibling.className === classNameBuilt
+    		return node.firstChild.tagName == 'svg'
     	}
 
     	function insertNodeBefore(referenceNode, newNode) {
     		referenceNode.parentNode.insertBefore(newNode, referenceNode);
     	}
 
+    	function createViewbox(svg) {
+    		svg.setAttribute('viewBox', '0 0 ' + parseInt(svg.getAttribute('width'), 10) + ' ' + parseInt(svg.getAttribute('height'),10));
+    		svg.setAttribute('preserveAspectRatio', 'xMidYMid');
+    		svg.style.width = "100%"
+    		svg.style.height = "100%"
+    	}
+
     	function createDiagram(diagramContainer, options, diagramSyntax) {
     		var diagram = Diagram.parse(diagramSyntax);
-    		listenToDiagramIsRendered(diagramContainer, options, makeFragmentsIfRequired);
+    		listenToDiagramIsRendered(diagramContainer, options, onRendered);
     		diagram.drawSVG(diagramContainer, { theme: options.theme });
+    	}
+
+    	function onRendered(diagramContainer, options) {
+        	makeFragmentsIfRequired(diagramContainer, options)
+        	createViewbox(diagramContainer.firstChild)
     	}
 
     	function listenToDiagramIsRendered(diagramContainer, options, callback){
