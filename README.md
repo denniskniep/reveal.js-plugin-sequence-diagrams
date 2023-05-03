@@ -31,7 +31,12 @@ Reveal.initialize({
 });
 ```
 
-Also import the CSS if you plan to use the hand drawn theme:
+If you use dark mode, import dark.css:
+```html
+<link href="plugin/sequence-diagrams/dark.css" rel="stylesheet" />
+```
+
+Also import the following stylesheet if you plan to use the hand drawn theme:
 ```html
 <link href="plugin/sequence-diagrams/sequence-diagram-min.css" rel="stylesheet" />
 ```
@@ -63,7 +68,7 @@ The plugin searches for all HTML objects with class `sequence-diagram`. Then it 
 
 **Example:**
 ```html
-<script class="sequence-diagram" type="text/template" data-config-useFragments="true" data-config-theme="simple">
+<div class="sequence-diagram" type="text/template" data-config-useFragments="true" data-config-theme="simple">
 	Title: Here is a title
 	A->B: Normal line
 	B-->C: Dashed line
@@ -72,7 +77,7 @@ The plugin searches for all HTML objects with class `sequence-diagram`. Then it 
 	D-->>A: Dashed open arrow
 	Note left of D: He thinks \n about it
 	A->A: Self
-</script>	
+</div>	
 ```
 
 The `data-config-*` attributes overrides the config from the reveal.js initialization options. But they are not required.
